@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
-                git branch: 'master', url: 'https://github.com/Arun7823/Netflix-Pipeline-Project.git'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Arun7823/Netflix-Pipeline-Project.git']])
             }
         }
         stage('Build') {
