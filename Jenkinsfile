@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy your application, e.g., to a server
-                sh '/var/lib/jenkins/workspace/L2-Pipeline/target/*.jar /root/apache-tomcat-9.0.91/webapps'
+                sh '/var/lib/jenkins/workspace/L2-Pipeline/target/NETFLIX-1.2.2.war /root/apache-tomcat-9.0.91/webapps'
             }
         }
     }
