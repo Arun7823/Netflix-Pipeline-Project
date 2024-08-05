@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy your application, e.g., to a server
-                sh 'sudo scp /var/lib/jenkins/workspace/L4-Pipeline/target/NETFLIX-1.2.2.war /root/apache-tomcat-9.0.91/webapps'
+                sh 'scp /var/lib/jenkins/workspace/L4-Pipeline/target/NETFLIX-1.2.2.war /root/apache-tomcat-9.0.91/webapps'
             }
         }
     }
