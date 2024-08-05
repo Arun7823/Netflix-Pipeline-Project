@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Build your project, e.g., using Maven, Gradle, etc.
+                // Build your project using Maven
                 sh 'mvn clean package'
             }
         }
@@ -26,8 +26,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // Deploy your application, e.g., to a server
-                sh 'scp /var/lib/jenkins/workspace/L4-Pipeline/target/NETFLIX-1.2.2.war /root/apache-tomcat-9.0.91/webapps'
+                // Deploy your application to a server
+                // Replace 'L4-Pipeline' with the appropriate Jenkins job name or use ${env.WORKSPACE} for dynamic workspace path
+                sh 'scp ${WORKSPACE}/target/NETFLIX-1.2.2.war root@13.126.240.217:/root/apache-tomcat-9.0.91/webapps/'
             }
         }
     }
@@ -35,6 +36,10 @@ pipeline {
         always {
             // Clean up or notify on completion
             echo 'Pipeline finished'
+        }
+        failure {
+            // Actions to take in case of failure
+            echo 'Pipeline failed'
         }
     }
 }
